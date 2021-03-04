@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<%= image_tag @post.image.url(:small) %>
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @post.link %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+#comments
+<%= comment_count= pluralize(@post.comments.count, "Comment") %>
+	<%= @comments.each do |comment| %>
+		.comment
+		
+			<%= p.content= comment.content %>
+    <% end %>
+	<%= render "comments/form" %>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+<%= link_to 'Home', root_path %>
